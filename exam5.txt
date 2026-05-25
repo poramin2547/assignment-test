@@ -1,0 +1,29 @@
+### ส่วน 1 ออกแบบฟีเจอร์ Dynamic Incentive (โบนัสพิเศษรายพื้นที่)
+ระบบจะเพิ่มโบนัสพิเศษในพื้นที่ที่มี Rider น้อย
+หรือมีการยกเลิกงานสูงในช่วง Rush Hour
+เพื่อจูงใจให้ Rider เข้ามารับงานมากขึ้น
+
+ปัจจัยที่ใช้คำนวณโบนัส:
+- จำนวน order 
+- จำนวน rider 
+- cancellation rate 
+- ช่วงเวลา rush hour 
+
+### ส่วน 2 ออกแบบ Schema ที่เก็บประวัติการยกเลิกงาน (Cancellation Log) เพื่อวิเคราะห์พฤติกรรมทุจริต (Fraud Detection)
+
+CREATE TABLE cancellation_logs (
+
+    id INT PRIMARY KEY AUTO_INCREMENT,
+
+    order_id INT,
+    rider_id INT,
+
+    cancel_reason VARCHAR(255),
+
+    zone_id VARCHAR(50),
+
+    cancelled_at DATETIME
+);
+
+ตารางนี้ใช้เก็บประวัติการยกเลิกงานเพื่อนำไปวิเคราะห์ Rider 
+ที่ยกเลิกงานบ่อยผิดปกติหรือยกเลิกงานในบางพื้นที่มากเกินไป
