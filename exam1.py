@@ -1,3 +1,5 @@
+# จงเขียนฟังก์ชัน assignRider(order, riders) เพื่อหา Rider ที่เหมาะสมที่สุด
+
 import math
 import time
 
